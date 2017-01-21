@@ -1,0 +1,20 @@
+create 'niit', 'info','roles'
+list
+describe 'niit'
+put 'niit', 'cutting', 'info:height', '9 ft'
+after this please put all the values as discussed in the class. The data is available in hbase ppt. there are 2 row key, cutting and tlipcon.
+
+scan 'niit'
+
+if you want to enter multiple values in one cell we need to modify the VERSIONS schema of the family in the table
+disable 'niit'
+alter 'niit' , {NAME=>'roles', VERSIONS=>3}
+enable 'niit'
+to see the changes in the schema
+describe 'niit'
+
+if u want to see all the old values for e.g.
+get 'niit' , 'tlipcon' , {COLUMN => 'roles:Hadoop' , VERSIONS =>3}
+
+if u want to see all data with one row key
+get 'niit', 'cutting'
